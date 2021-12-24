@@ -19,5 +19,7 @@ public class Max3 {
         if(c > max) max = c;
 
         System.out.println("max값은 " + max + "입니다.");
+
+
     }
 }
