@@ -60,7 +60,7 @@ public class YearMonthDay {
                     temp.m = 12;
                 } else {
                     temp.d += mdays[isLeap(temp.y)][temp.m - 2];
-                    temp.m;
+                    //temp.m;
                 }
             }
             return temp;
@@ -94,7 +94,6 @@ public class YearMonthDay {
             }
 
             System.out.printf("바뀐 날짜는 %d년 %d월 %d일 입니다.\n", temp.y, temp.m, temp.d);
-
         }
     }
 }
