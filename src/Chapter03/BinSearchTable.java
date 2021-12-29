@@ -7,9 +7,33 @@ public class BinSearchTable {
         int pl = 0;
         int pr = num - 1;
 
+        System.out.print("   |");
+        for(int i = 0; i < num; i++) {
+            System.out.printf("%3d", i);
+        }
+        System.out.print("\n---+");
+        for(int i = 0; i < num; i++) {
+            System.out.print("---");
+        }
 
         do {
             int pc = (pl + pr) / 2;
+
+            System.out.print("\n   |");
+            for(int i = 0; i < num; i++) {
+                if(i == pc)
+                    System.out.print("  +");
+                else if(i == pl)
+                    System.out.print(" <-");
+                else if(i == pr)
+                    System.out.print(" ->");
+                else
+                    System.out.print("   ");
+            }
+            System.out.printf("\n%3d|", pc);
+            for(int i = 0; i < num; i++) {
+                System.out.printf("%3d", a[i]);
+            }
             if (a[pc] == key)
                 return pc;
             else if (a[pc] > key)
@@ -17,6 +41,8 @@ public class BinSearchTable {
             else
                 pl = pc + 1;
         } while (pl <= pr);
+
+        System.out.println();
 
         return - 1;
     }
