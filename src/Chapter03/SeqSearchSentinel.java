@@ -6,13 +6,10 @@ public class SeqSearchSentinel {
 
     static int seqSearchSentinel(int[] a, int key, int num) {
         a[num] = key;
-        int i = 0;
-        while (true) {
-            if (a[i] == key) {
-                break;
-            }
-            i++;
-        }
+        int i;
+
+        for(i = 0; a[i] != key; i++);
+
         return i == num ? -1 : i;
     }
 
