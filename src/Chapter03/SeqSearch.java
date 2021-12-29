@@ -4,7 +4,22 @@ import java.util.Scanner;
 
 public class SeqSearch {
     static int seqSearch(int[] a, int num, int key) {
+        System.out.print("   |");
+        for(int i = 0; i < num; i++) System.out.printf("%3d", i);
+        System.out.print("\n---+");
+        for(int i = 0; i < num; i++) System.out.print("---");
+        System.out.println();
+
         for(int i = 0; i < num; i++) {
+            System.out.print("   |");
+            for(int j = 0; j < i; j++)
+                System.out.print("   ");
+            System.out.println("  *");
+            System.out.printf("%3d|", i);
+            for(int h = 0; h < num; h++)
+                System.out.printf("%3d", a[h]);
+            System.out.println();
+
             if(a[i] == key) return i;
         }
         return -1;
