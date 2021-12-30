@@ -21,11 +21,11 @@ public class PhysExamSearch {
             return name + " " + height + " " + vision;
         }
 
-        public static final Comparator<PhyscData> HEIGHT_ORDER = new HeightOrderComparator();
+        public static final Comparator<PhyscData> VISION_ORDER = new VisionOrderComparator();
 
-        private static class HeightOrderComparator implements Comparator<PhyscData> {
+        private static class VisionOrderComparator implements Comparator<PhyscData> {
             public int compare(PhyscData d1, PhyscData d2) {
-                return (d1.height > d2.height) ? 1 : (d1.height == d2.height) ? 0 : -1;
+                return (d1.vision > d2.vision) ? 1 : (d1.vision == d2.vision) ? 0 : -1;
             }
         }
 
@@ -37,18 +37,18 @@ public class PhysExamSearch {
         PhyscData[] x = {
                 new PhyscData("이나령", 162, 0.3),
                 new PhyscData("유지훈", 168, 0.4),
-                new PhyscData("김한결", 169, 0.8),
-                new PhyscData("홍준기", 171, 1.5),
-                new PhyscData("전서현", 173, 0.7),
-                new PhyscData("이호연", 174, 1.2),
+                new PhyscData("김한결", 169, 0.7),
+                new PhyscData("홍준기", 171, 0.8),
+                new PhyscData("전서현", 173, 1.2),
+                new PhyscData("이호연", 174, 1.5),
                 new PhyscData("이수민", 175, 2.0),
         };
-        System.out.print("몇 cm인 사람을 찾고 있나요? : ");
-        int height = stdIn.nextInt();
+        System.out.print("시력이 몇인 사람을 찾고 있나요? : ");
+        double vision = stdIn.nextDouble();
         int idx = Arrays.binarySearch(
                 x,
-                new PhyscData("", height, 0.0),
-                PhyscData.HEIGHT_ORDER);
+                new PhyscData("", 0, vision),
+                PhyscData.VISION_ORDER);
 
         if (idx < 0) System.out.println("찾고자 하는 값이 없습니다.");
         else {
