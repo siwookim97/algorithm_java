@@ -10,15 +10,11 @@ public class IntAryQeueu {
     public class EmptyIntQueueException extends RuntimeException {
         public EmptyIntQueueException() {
         }
-
-        ;
     }
 
     public class OverflowIntQueueException extends RuntimeException {
         public OverflowIntQueueException() {
         }
-
-        ;
     }
 
     public IntAryQeueu(int capacity) {
