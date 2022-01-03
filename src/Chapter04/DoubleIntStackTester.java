@@ -111,6 +111,7 @@ public class DoubleIntStackTester {
                         s.indexOfB(x);
                     if(x == -1) System.out.println("찾고자 하는 데이터가 없습니다.");
                     else System.out.println("찾고자 하는 데이터가 stk[" + x + "]에 있습니다.");
+                    break;
             }
         }
     }
