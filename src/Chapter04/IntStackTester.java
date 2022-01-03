@@ -9,7 +9,7 @@ public class IntStackTester {
 
         while (true) {
             System.out.println("현재 데이터 수 : " + s.size() + "/" + s.capacity());
-            System.out.print("(1)푸시   (2)팝   (3)피크   (4)덤프   (5)isEmpty   (6)isFull   (7)clear   (0)종료 : ");
+            System.out.print("(1)푸시   (2)팝   (3)피크   (4)덤프   (5)isEmpty   (6)isFull   (7)clear   (8)indexOf   (0)종료 : ");
 
             int menu = stdIn.nextInt();
             if (menu == 0) break;
@@ -68,6 +68,13 @@ public class IntStackTester {
                 case 7:
                     s.clear();
                     break;
+
+                case 8:
+                    System.out.print("찾고자 하는 데이터 : ");
+                    x = stdIn.nextInt();
+                    s.indexOf(x);
+                    if(x == -1) System.out.println("찾고자 하는 데이터가 없습니다.");
+                    else System.out.println("찾고자 하는 데이터가 stk[" + x + "]에 있습니다.");
             }
         }
     }
