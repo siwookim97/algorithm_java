@@ -9,12 +9,13 @@ public class IntStackTester {
 
         while (true) {
             System.out.println("현재 데이터 수 : " + s.size() + "/" + s.capacity());
-            System.out.print("(1)푸시   (2)팝   (3)피크   (4)덤프   (0)종료 : ");
+            System.out.print("(1)푸시   (2)팝   (3)피크   (4)덤프   (5)isEmpty   (6)isFull   (7)clear   (0)종료 : ");
 
             int menu = stdIn.nextInt();
             if (menu == 0) break;
 
             int x;
+            boolean tOrF;
             switch (menu) {
                 case 1:
                     System.out.print("데이터 : ");
@@ -46,6 +47,26 @@ public class IntStackTester {
 
                 case 4:
                     s.dump();
+                    break;
+
+                case 5:
+                    tOrF = s.isEmpty();
+                    if(tOrF == true)
+                        System.out.println("스택이 비어있습니다.");
+                    else
+                        System.out.println("스택이 비어있지 않습니다.");
+                    break;
+
+                case 6:
+                    tOrF = s.isFull();
+                    if(tOrF == true)
+                        System.out.println("스택이 가득 차있습니다.");
+                    else
+                        System.out.println("스택이 가득 차있지 않습니다.");
+                    break;
+
+                case 7:
+                    s.clear();
                     break;
             }
         }
