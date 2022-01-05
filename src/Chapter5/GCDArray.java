@@ -8,14 +8,13 @@ public class GCDArray {
         while (y != 0) {
             temp = y;
             y = x % y;
-            x = temp;
+            x = y;
         }
         return x;
     }
 
     static int gcdArray(int[] a) {
-
-        }
+        return 1;
     }
 
     public static void main(String[] args) {
