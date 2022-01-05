@@ -4,20 +4,13 @@ import java.util.Scanner;
 
 public class EiclidGCD {
     static int gcd(int x, int y) {
-        while (true) {
-            if (x == y)
-                return x;
-
-            if (x > y)
-                x %= y;
-            else if (x < y)
-                y %= x;
-
-            if (y == 0)
-                return x;
-            else if (x == 0)
-                return y;
+        int temp;
+        while (y != 0) {
+            temp = y;
+            y = x % y;
+            x = temp;
         }
+        return x;
     }
 
     public static void main(String[] args) {
