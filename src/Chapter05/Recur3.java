@@ -25,7 +25,7 @@ public class Recur3 {
             if(s1.isEmpty() != true) {
                 n1 = s1.pop();
                 n2 = s2.pop();
-                System.out.println(n)
+                System.out.println(n);
                 continue;
             }
         }
