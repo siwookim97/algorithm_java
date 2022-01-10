@@ -92,6 +92,32 @@ public class BubbleSort {
         System.out.println("비교 횟수 : " + comp);
     }
 
+    static void bubbleSort4(int[] a, int n) {
+        int left = 0; // 홀수 패스의 몇 번째 까지 완료가 되었는지
+        int right = n - 1; // 짝수 패스의 몇 번째 까지 완료가 되었는지
+        int last = right;
+
+        while (left < right) {
+            for (int i = right; i > left; i--) {
+                if (a[i] < a[i - 1]) {
+                    swap(a, i, i - 1);
+                    last = i;
+                }
+            }
+            left = last;
+
+
+            for (int i = left; i < right; i++) {
+                if (a[i] > a[i + 1]) {
+                    swap(a, i, i + 1);
+                    last = i;
+                }
+            }
+            right = last;
+
+        }
+    }
+
     public static void main(String[] args) {
         Scanner stdIn = new Scanner(System.in);
 
@@ -105,7 +131,7 @@ public class BubbleSort {
             x[i] = stdIn.nextInt();
         }
 
-        bubbleSort3(x, n);
+        bubbleSort4(x, n);
 
         for (int i = 0; i < n; i++)
             System.out.println("x[" + i + "]=" + x[i]);
