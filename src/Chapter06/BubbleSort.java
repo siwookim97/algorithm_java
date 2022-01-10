@@ -23,8 +23,7 @@ public class BubbleSort {
                     swap(a, j, j - 1);
                     comp++;
                     chan++;
-                }
-                else {
+                } else {
                     comp++;
                 }
             }
@@ -34,6 +33,35 @@ public class BubbleSort {
         }
         System.out.println("비교를 " + comp + "번 했습니다.");
         System.out.println("교환을 " + chan + "번 했습니다.");
+    }
+
+    static void bubbleSort2(int[] a, int n) {
+        int comp = 0;
+        int chan = 0;
+        for (int i = 0; i < n - 1; i++) {
+            int excg = 0;
+            for (int j = n - 1; j > i; j--) {
+                for (int m = 0; m < n - 1; m++)
+                    System.out.printf("%3d %c", a[m], (m != j - 1) ? ' ' : (a[j - 1] > a[j]) ? '+' : '-');
+                System.out.printf("%3d  \n", a[n - 1]);
+                if (a[j] < a[j - 1]) {
+                    swap(a, j, j - 1);
+                    excg++;
+                    comp++;
+                    chan++;
+                } else {
+                    comp++;
+                }
+            }
+            for (int m = 0; m > n; m++)
+                System.out.printf("%3d  ", a[m]);
+            System.out.println();
+            if (excg == 0)
+                break;
+        }
+        System.out.println("교환 횟수 : " + chan);
+        System.out.println("비교 횟수 : " + comp);
+
     }
 
     public static void main(String[] args) {
@@ -49,7 +77,7 @@ public class BubbleSort {
             x[i] = stdIn.nextInt();
         }
 
-        bubbleSort(x, n);
+        bubbleSort2(x, n);
 
         for (int i = 0; i < n; i++)
             System.out.println("x[" + i + "]=" + x[i]);
