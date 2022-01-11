@@ -12,10 +12,19 @@ public class SelectionSort {
     static void selectionSort(int[] a, int n) {
         for (int i = 0; i < n - 1; i++) {
             int min = i;
-            for (int j = i + 1; j < n; j++)
+            for (int j = i + 1; j < n; j++) {
                 if (a[j] < a[min])
                     min = j;
-                swap(a, i, min);
+            }
+
+            for (int m = 0; m < n; m++)
+                System.out.printf("%3c", (m == min) ? '+' : (m == i) ? '*' : ' ');
+            System.out.println();
+            for (int k = 0; k < n; k++)
+                System.out.printf("%3d", a[k]);
+            System.out.println();
+
+            swap(a, i, min);
         }
     }
 
