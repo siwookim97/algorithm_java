@@ -24,6 +24,7 @@ public class SelectionSort {
                 System.out.printf("%3d", a[k]);
             System.out.println();
 
+
             swap(a, i, min);
         }
     }
