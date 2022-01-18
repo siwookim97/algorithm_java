@@ -51,13 +51,25 @@ public class QuickSort {
                     swap(a, pl++, pr--);
             } while (pl <= pr);
 
-            if (left < pr) {
-                lstack.push(left);
-                rstack.push(pr);
+            if (pr - left <= right - pl) { // 스택에 쌓이는 데이터의 수를 줄이 기위한 조건문
+                if (left < pr) {
+                    lstack.push(left);
+                    rstack.push(pr);
+                }
+                if (pl < right) {
+                    lstack.push(pl);
+                    rstack.push(right);
+                }
             }
-            if (pl < right) {
-                lstack.push(pl);
-                rstack.push(right);
+            else {
+                if (pl < right) {
+                    lstack.push(pl);
+                    rstack.push(right);
+                }
+                if (pr > left) {
+                    lstack.push(left);
+                    rstack.push(pr);
+                }
             }
         }
     }
