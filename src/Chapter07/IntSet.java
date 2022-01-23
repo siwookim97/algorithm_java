@@ -47,7 +47,58 @@ public class IntSet {
             set[num++] = n;
             return true;
         }
+    }
 
+    public boolean add(IntSet s) { // 합집합
+        boolean flag = false;
+        for (int i = 0; i < s.num; i++) {
+            if (add(s.set[i]) == true)
+                flag = true;
+        }
+        return flag;
+    }
+
+    public boolean retain(IntSet s) { // 교집합
+        boolean flag = false;
+        IntSet temp = new IntSet(max);
+        int n = 0;
+
+        for (int i = 0; i < s.num; i++) {
+            if (contains(s.set[i]) == true) {
+                temp.add(s.set[i]);
+                n++;
+                flag = true;
+            }
+        }
+        if (n != 0) {
+            for (int i = 0; i < n; i++)
+                set[i] = temp.set[i];
+        }
+        num = n;
+
+        return flag;
+    }
+
+    public boolean retain_ver2(IntSet s) { // 교집합 ver.2, 더욱 간단함
+        boolean flag = false;
+        for (int i = 0; i < num; i++)
+            if (s.contains(set[i]) == false) {
+                remove(set[i]);
+                flag = true;
+            }
+        return flag;
+
+    }
+
+    public boolean remove(IntSet s) { // 차집합
+        boolean flag = false;
+        for (int i = 0; i < s.num; i++) {
+            if (contains(s.set[i]) == true) {
+                remove(s.set[i]);
+                flag = true;
+            }
+        }
+        return flag;
     }
 
     public boolean remove(int n) {
@@ -112,11 +163,36 @@ public class IntSet {
         return num == 0;
 
     }
+
     public boolean isFull() {
         return num >= max;
     }
+
     public void clear() {
         num = 0;
     }
 
+    public boolean isSubsetOf(IntSet s) { // s의 부분집합인지 확인하는 메서드
+        if (num > s.num) // s보다 요소가 더 있다면 부분집합이 될 수 없다
+            return false;
+
+        for (int i = 0; i < num; i++) {
+            int j = 0;
+            for ( ; j < s.num; j++) {
+                if (set[i] == s.set[j])
+                    break;
+            }
+            if (j == s.num)
+                return false;
+        }
+        return true;
+    }
+
+
+    public boolean isProperSubsetOf(IntSet s) {
+        if (num >= s.num)
+            return false;
+
+        return isSubsetOf(s);
+    }
 }

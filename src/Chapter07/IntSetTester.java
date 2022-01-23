@@ -6,10 +6,19 @@ public class IntSetTester {
         IntSet s2 = new IntSet(20);
         IntSet s3 = new IntSet(20);
 
+        IntSet s4 = new IntSet(20);
+        s4.add(10);
+        s4.add(15);
+
         s1.add(10);
         s1.add(15);
         s1.add(20);
         s1.add(25);
+
+        System.out.println("         " + s4.isSubsetOf(s1));
+        System.out.println(s4);
+        System.out.println(s1);
+
 
         s1.copyTo(s2);
         s2.add(12);
