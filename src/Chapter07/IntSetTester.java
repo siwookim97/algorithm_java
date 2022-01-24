@@ -7,6 +7,7 @@ public class IntSetTester {
         IntSet s3 = new IntSet(20);
 
         IntSet s4 = new IntSet(20);
+        IntSet s5 = new IntSet(20);
         s4.add(10);
         s4.add(15);
 
@@ -15,10 +16,8 @@ public class IntSetTester {
         s1.add(20);
         s1.add(25);
 
-        System.out.println("         " + s4.isSubsetOf(s1));
-        System.out.println(s4);
-        System.out.println(s1);
-
+        s5.intersectionOf(s1, s4);
+        System.out.println("s5 : " + s5);
 
         s1.copyTo(s2);
         s2.add(12);

@@ -195,4 +195,18 @@ public class IntSet {
 
         return isSubsetOf(s);
     }
+
+    public void intersectionOf(IntSet s1, IntSet s2) {
+        clear();
+        for (int i = 0; i < s1.num; i++)
+            if (s2.contains(s1.set[i]) == true)
+                add(s1.set[i]);
+    }
+
+    public void differenceOf(IntSet s1, IntSet s2) {
+        clear();
+        for (int i = 0; i < s1.num; i++)
+            if (s2.contains(s1.set[i]) != true)
+                add(s1.set[i]);
+    }
 }
