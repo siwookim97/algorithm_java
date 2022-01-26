@@ -80,13 +80,12 @@ public class BFmatch {
 
     public static void main(String[] args) {
         Scanner stdIn = new Scanner(System.in);
-
+        int[] a = new int[10];
         System.out.print("텍스트 : ");
         String s1 = stdIn.next();
 
         System.out.print("패턴 : ");
         String s2 = stdIn.next();
-
         int idx = bfMatchLast(s1, s2);
 
         if (idx == -1)
