@@ -59,6 +59,24 @@ public class BFmatch {
         return -1;
     }
 
+    static int bfMatchLast(String txt, String pat) { // 텍스트의 가장 뒤쪽의 인덱스를 반환하는 메서드
+        int pp = pat.length() - 1;
+        int pt = txt.length() - 1;
+
+        while (pt >= 0 && pp >= 0) {
+            if (txt.charAt(pt) == pat.charAt(pp)) {
+                pp--;
+                pt--;
+            }
+            else {
+                pt = pt + (pat.length() - pp) - 2;
+                pp = pat.length() - 1;
+            }
+        }
+        if (pp < 0)
+            return pt + 1;
+        return -1;
+    }
 
     public static void main(String[] args) {
         Scanner stdIn = new Scanner(System.in);
@@ -69,7 +87,7 @@ public class BFmatch {
         System.out.print("패턴 : ");
         String s2 = stdIn.next();
 
-        int idx = bfMatchPrint(s1, s2);
+        int idx = bfMatchLast(s1, s2);
 
         if (idx == -1)
             System.out.println("텍스트에 패턴이 없습니다.");
