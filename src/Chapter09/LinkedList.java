@@ -71,4 +71,53 @@ public class LinkedList<E> {
             }
         }
     }
+
+    public void remove(Node p) {
+        if (head != null) {
+            if (p == head)
+                removeFirst();
+            else {
+                Node<E> ptr = head;
+                while (ptr.next != p) {
+                    ptr = ptr.next;
+                    if (ptr == null) return;
+                }
+                ptr.next = p.next;
+                crnt = ptr;
+            }
+        }
+    }
+
+    public void removeCurrentNode() {
+        remove(crnt);
+    }
+
+    public void clear() {
+        while (head != null)
+            removeFirst();
+        crnt = null;
+    }
+
+    public boolean next() {
+        if (crnt == null || crnt.next == null)
+            return false;
+        crnt = crnt.next;
+        return true;
+    }
+
+    public void printCurrentNode() {
+        if (crnt == null)
+            System.out.println("선택한 노드가 없습니다.");
+        else
+            System.out.println(crnt.data);
+    }
+
+    public void dump() {
+        Node<E> ptr = head;
+
+        while (ptr != null) {
+            System.out.println(ptr.data);
+            ptr = ptr.next;
+        }
+    }
 }
