@@ -32,6 +32,8 @@ public class BMMatch {
     public static void main(String[] args) {
         Scanner stdIn = new Scanner(System.in);
 
+
+
         System.out.println("======Boyer-Moore======");
         System.out.print("텍스트 : ");
         String s1 = stdIn.next();
