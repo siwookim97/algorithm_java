@@ -1,5 +1,6 @@
 package Chapter09;
 
+import java.util.Comparator;
 import java.util.Scanner;
 
 public class LinkedListTester {
@@ -13,7 +14,7 @@ public class LinkedListTester {
         private String name;
 
         public String toString() {
-            return  "(" + no + ") " + name;
+            return "(" + no + ") " + name;
         }
 
         void scanData(String guide, int sw) {
@@ -21,14 +22,75 @@ public class LinkedListTester {
 
             if ((sw & NO) == NO) {
                 System.out.print("번호 : ");
-                no =stdIn.nextInt();
+                no = stdIn.nextInt();
             }
             if ((sw & NAME) == NAME) {
                 System.out.print("이름 : ");
-                name =stdIn.next();
+                name = stdIn.next();
             }
         }
 
+        public static final Comparator<Data> NO_ORDER = new NoOrderComparator();
 
+        private static class NoOrderComparator implements Comparator<Data> {
+            public int compare(Data d1, Data d2) {
+                return (d1.no > d2.no) ? 1 : (d1.no < d2.no) ? -1 : 0;
+            }
+        }
+
+        public static final Comparator<Data> NAME_ORDER = new NameOrderComparator();
+
+        private static class NameOrderComparator implements Comparator<Data> {
+            public int compare(Data d1, Data d2) {
+                return d1.name.compareTo(d2.name);
+            }
+        }
+    }
+
+    enum Menu {
+        ADD_FIRST("머리에 노드를 삽입"),
+        ADD_LAST("꼬리에 노드를 삽입"),
+        RMV_FIRST("머리 노드를 삭제"),
+        RMV_LAST("꼬리 노드를 삭제"),
+        RMV_CRNT("선택 노드를 삭제"),
+        CLEAR("모든 노드를 삭제"),
+        SEARCH_NO("번호로 검색"),
+        SEARCH_NAME("이름으로 검색"),
+        NEXT("선택 노드를 하나 뒤쪽으로 이동"),
+        PRINT_CRNT("선택 노드를 출력"),
+        DUMP("모든 노드를 출력"),
+        TERMINAME("종료");
+
+        private final String message;
+
+        static Menu MenuAt(int idx) {
+            for (Menu m : Menu.values()) {
+                if (m.ordinal() == idx)
+                    return m;
+            }
+            return null;
+        }
+
+        Menu(String string) {
+            message = string;
+        }
+
+        String getMessage() {
+            return message;
+        }
+    }
+
+    static Menu selectMenu() {
+        int key;
+        do {
+            for (Menu m : Menu.values()) {
+                System.out.printf("(%d) %s  ", m.ordinal(), m.getMessage());
+                if ((m.ordinal() % 3) == 2 && m.ordinal() != Menu.TERMINAME.ordinal())
+                    System.out.println();
+            }
+            System.out.print(":");
+            key = stdIn.nextInt();
+        } while (key < Menu.ADD_FIRST.ordinal() || key > Menu.TERMINAME.ordinal());
+        return Menu.MenuAt(key);
     }
 }
