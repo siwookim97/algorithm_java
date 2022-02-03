@@ -93,4 +93,76 @@ public class LinkedListTester {
         } while (key < Menu.ADD_FIRST.ordinal() || key > Menu.TERMINAME.ordinal());
         return Menu.MenuAt(key);
     }
+
+    public static void main(String[] rags) {
+        Menu menu;
+        Data data;
+        Data ptr;
+        Data temp = new Data();
+
+        LinkedList<Data> list = new LinkedList<Data>();
+
+        do {
+            switch (menu = selectMenu()) {
+
+                case ADD_FIRST:
+                    data = new Data();
+                    data.scanData("머리에 삽입", Data.NO | Data.NAME);
+                    list.addFirst(data);
+                    break;
+
+                case ADD_LAST:
+                    data = new Data();
+                    data.scanData("꼬리에 삽입", Data.NO | Data.NAME);
+                    list.addLast(data);
+                    break;
+
+                case RMV_FIRST:
+                    list.removeFirst();
+                    break;
+
+                case RMV_LAST:
+                    list.removeLast();
+                    break;
+
+                case RMV_CRNT:
+                    list.removeCurrentNode();
+                    break;
+
+                case SEARCH_NO:
+                    temp.scanData("검색", Data.NO);
+                    ptr = list.search(temp, Data.NO_ORDER);
+                    if (ptr == null)
+                        System.out.println("그 번호의 데이터가 없습니다.");
+                    else
+                        System.out.println("검색 성공 : " + ptr);
+                    break;
+
+                case SEARCH_NAME:
+                    temp.scanData("검색", Data.NAME);
+                    ptr = list.search(temp, Data.NAME_ORDER);
+                    if (ptr == null)
+                        System.out.println("그 이름의 데이터가 없습니다.");
+                    else
+                        System.out.println("검색 성공 : " + ptr);
+                    break;
+
+                case NEXT:
+                    list.next();
+                    break;
+
+                case PRINT_CRNT:
+                    list.printCurrentNode();
+                    break;
+
+                case DUMP:
+                    list.dump();
+                    break;
+
+                case CLEAR:
+                    list.clear();
+                    break;
+            }
+        } while (menu != Menu.TERMINAME);
+    }
 }
