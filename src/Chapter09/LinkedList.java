@@ -121,7 +121,7 @@ public class LinkedList<E> {
         }
     }
 
-    public void purge(Comparator <? super E> c) {
+    public void purge(Comparator<? super E> c) {
         Node<E> ptr = head;
         System.out.println("purge");
         while (ptr != null) {
@@ -142,5 +142,30 @@ public class LinkedList<E> {
             ptr = ptr.next;
         }
         crnt = head;
+    }
+
+    public E retrieve(int n) {
+        Node<E> ptr = head;
+        crnt = head;
+        int count = n;
+
+        if (count == 0)
+            return ptr.data;
+        else if (count < 0) {
+            crnt = null;
+            return null;
+        }
+        else {
+            while (count != 0) {
+                ptr = ptr.next;
+                crnt = crnt.next;
+                count--;
+                if (ptr.next == null && count != 0) {
+                    crnt = null;
+                    return null;
+                }
+            }
+            return ptr.data;
+        }
     }
 }

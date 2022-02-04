@@ -60,7 +60,8 @@ public class LinkedListTester {
         PRINT_CRNT("선택 노드를 출력"),
         DUMP("모든 노드를 출력"),
         TERMINAME("종료"),
-        PURGE("중복삭제");
+        PURGE("중복삭제"),
+        RETRIEVE("점프");
 
         private final String message;
 
@@ -91,7 +92,7 @@ public class LinkedListTester {
             }
             System.out.print(":");
             key = stdIn.nextInt();
-        } while (key < Menu.ADD_FIRST.ordinal() || key > Menu.PURGE.ordinal());
+        } while (key < Menu.ADD_FIRST.ordinal() || key > Menu.RETRIEVE.ordinal());
         return Menu.MenuAt(key);
     }
 
@@ -172,6 +173,15 @@ public class LinkedListTester {
                     } while ((num != 1) == (num != 2));
                     if (num == 1) list.purge(Data.NO_ORDER);
                     else if (num == 2) list.purge(Data.NAME_ORDER);
+
+                case RETRIEVE:
+                    int count = 0;
+
+                    System.out.print("몇 단계 점프 : ");
+                    count = stdIn.nextInt();
+
+                    ptr = list.retrieve(count);
+                    System.out.println(ptr);
             }
         } while (menu != Menu.TERMINAME);
     }
