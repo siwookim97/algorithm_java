@@ -91,7 +91,7 @@ public class LinkedListTester {
             }
             System.out.print(":");
             key = stdIn.nextInt();
-        } while (key < Menu.ADD_FIRST.ordinal() || key > Menu.TERMINAME.ordinal());
+        } while (key < Menu.ADD_FIRST.ordinal() || key > Menu.PURGE.ordinal());
         return Menu.MenuAt(key);
     }
 
@@ -165,12 +165,11 @@ public class LinkedListTester {
                     break;
 
                 case PURGE:
-                    System.out.println("          asdasfasdasd");
                     int num = 0;
                     do {
                         System.out.print("번호로 중복 찾기(1) / 이름으로 중복 찾기(2) : ");
                         num = stdIn.nextInt();
-                    } while (num != 1 || num != 2);
+                    } while ((num != 1) == (num != 2));
                     if (num == 1) list.purge(Data.NO_ORDER);
                     else if (num == 2) list.purge(Data.NAME_ORDER);
             }
