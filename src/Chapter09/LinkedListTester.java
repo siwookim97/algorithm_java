@@ -59,7 +59,8 @@ public class LinkedListTester {
         NEXT("선택 노드를 하나 뒤쪽으로 이동"),
         PRINT_CRNT("선택 노드를 출력"),
         DUMP("모든 노드를 출력"),
-        TERMINAME("종료");
+        TERMINAME("종료"),
+        PURGE("중복삭제");
 
         private final String message;
 
@@ -162,6 +163,16 @@ public class LinkedListTester {
                 case CLEAR:
                     list.clear();
                     break;
+
+                case PURGE:
+                    System.out.println("          asdasfasdasd");
+                    int num = 0;
+                    do {
+                        System.out.print("번호로 중복 찾기(1) / 이름으로 중복 찾기(2) : ");
+                        num = stdIn.nextInt();
+                    } while (num != 1 || num != 2);
+                    if (num == 1) list.purge(Data.NO_ORDER);
+                    else if (num == 2) list.purge(Data.NAME_ORDER);
             }
         } while (menu != Menu.TERMINAME);
     }

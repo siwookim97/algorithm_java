@@ -120,4 +120,27 @@ public class LinkedList<E> {
             ptr = ptr.next;
         }
     }
+
+    public void purge(Comparator <? super E> c) {
+        Node<E> ptr = head;
+        System.out.println("purge");
+        while (ptr != null) {
+            Node<E> ptr2 = ptr.next;
+            int dup = 0;
+
+            while (ptr2 != null) {
+                if (c.compare(ptr.data, ptr2.data) == 0) {
+                    remove(ptr2);
+                    dup = 1;
+                }
+                if (dup == 1) {
+                    remove(ptr);
+                }
+
+                ptr2 = ptr2.next;
+            }
+            ptr = ptr.next;
+        }
+        crnt = head;
+    }
 }
