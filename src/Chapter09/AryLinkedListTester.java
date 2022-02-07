@@ -59,7 +59,8 @@ public class AryLinkedListTester {
         NEXT("선택 노드를 하나 뒤쪽으로 이동"),
         PRINT_CRNT("선택 노드를 출력"),
         DUMP("모든 노드를 출력"),
-        TERMINAME("종료");
+        TERMINAME("종료"),
+        PURGE("중복확인");
 
         private final String message;
 
@@ -84,12 +85,12 @@ public class AryLinkedListTester {
         do {
             for (Menu m : Menu.values()) {
                 System.out.printf("(%d) %s  ", m.ordinal(), m.getMessage());
-                if ((m.ordinal() % 3) == 2 && m.ordinal() != Menu.TERMINAME.ordinal())
+                if ((m.ordinal() % 3) == 2 && m.ordinal() != Menu.PURGE.ordinal())
                     System.out.println();
             }
             System.out.print(" : ");
             key = stdIn.nextInt();
-        } while (key < Menu.ADD_FIRST.ordinal() || key > Menu.TERMINAME.ordinal());
+        } while (key < Menu.ADD_FIRST.ordinal() || key > Menu.PURGE.ordinal());
         return Menu.MenuAt(key);
     }
 
@@ -162,6 +163,20 @@ public class AryLinkedListTester {
                     list.clear();
                     break;
 
+                case PURGE:
+                    int num;
+                    System.out.println("중복된 값이 있는 노드를 모두 삭제합니다.");
+
+                    do {
+                        System.out.print("(1)숫자로 비교 (2)이름으로 비교");
+                        num = stdIn.nextInt();
+                    } while (num != 1 && num != 2);
+
+                    // 숫자로 비교
+                    if (num == 1)
+                        list.purge(Data.NO_ORDER);
+                    else if (num == 2)
+                        list.purge(Data.NAME_ORDER);
             }
         } while (menu != Menu.TERMINAME);
     }

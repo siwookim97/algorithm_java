@@ -178,5 +178,28 @@ public class AryLinkedList<E> {
             ptr = n[ptr].next;
         }
     }
+
+    public void purge(Comparator <? super E> c) {
+        int ptr1 = head;
+        int cnt = 0;  // 중복 요소가 있는지 확인
+
+        while (ptr1 != NULL) {
+            int ptr2 = ptr1;
+            ptr2 = n[ptr2].next;
+
+            while (ptr2 != NULL) {
+                if (c.compare(n[ptr1].data, n[ptr2].data) == 0) {
+                    remove(ptr2);
+                    cnt = 1;
+                }
+                ptr2 = n[ptr2].next;
+                if (cnt == 1)
+                    remove(ptr1);
+            }
+
+            ptr1 = n[ptr1].next;
+        }
+        crnt = head;
+    }
 }
 
