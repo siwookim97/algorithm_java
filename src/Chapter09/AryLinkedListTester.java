@@ -60,7 +60,9 @@ public class AryLinkedListTester {
         PRINT_CRNT("선택 노드를 출력"),
         DUMP("모든 노드를 출력"),
         TERMINAME("종료"),
-        PURGE("중복확인");
+        PURGE("중복확인"),
+        RETRIEVE("점프");
+
 
         private final String message;
 
@@ -85,12 +87,12 @@ public class AryLinkedListTester {
         do {
             for (Menu m : Menu.values()) {
                 System.out.printf("(%d) %s  ", m.ordinal(), m.getMessage());
-                if ((m.ordinal() % 3) == 2 && m.ordinal() != Menu.PURGE.ordinal())
+                if ((m.ordinal() % 3) == 2 && m.ordinal() != Menu.RETRIEVE.ordinal())
                     System.out.println();
             }
             System.out.print(" : ");
             key = stdIn.nextInt();
-        } while (key < Menu.ADD_FIRST.ordinal() || key > Menu.PURGE.ordinal());
+        } while (key < Menu.ADD_FIRST.ordinal() || key > Menu.RETRIEVE.ordinal());
         return Menu.MenuAt(key);
     }
 
@@ -177,6 +179,15 @@ public class AryLinkedListTester {
                         list.purge(Data.NO_ORDER);
                     else if (num == 2)
                         list.purge(Data.NAME_ORDER);
+
+                case RETRIEVE:
+                    int i;
+                    System.out.println("점프를 합니다");
+                    System.out.print("몇 번 점프를 하시겠습니까? : ");
+                    i = stdIn.nextInt();
+
+                    ptr = list.retrieve(i);
+                    System.out.println("점프 결과는 " + ptr + "입니다.");
             }
         } while (menu != Menu.TERMINAME);
     }

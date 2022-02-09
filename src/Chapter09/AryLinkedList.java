@@ -179,7 +179,7 @@ public class AryLinkedList<E> {
         }
     }
 
-    public void purge(Comparator <? super E> c) {
+    public void purge(Comparator<? super E> c) {
         int ptr1 = head;
         int cnt = 0;  // 중복 요소가 있는지 확인
 
@@ -200,6 +200,22 @@ public class AryLinkedList<E> {
             ptr1 = n[ptr1].next;
         }
         crnt = head;
+    }
+
+    public E retrieve(int i) {
+        int ptr = head;
+        while (i >= 0 || ptr != NULL) {
+            i--;
+            ptr = n[ptr].next;
+            if (i == 0) { // 정상적으로 retrieve를 마쳤을 경우
+                crnt = ptr;
+                return n[ptr].data;
+            } else { // 원하는 값까지 가지 못했을 경우 (i의 값이 노드의 개수보다 크거나 같다)
+                crnt = head;
+                return null;
+            }
+        }
+        return null;
     }
 }
 
