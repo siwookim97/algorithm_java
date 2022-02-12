@@ -44,4 +44,65 @@ public class DbLinkedList<E> {
         }
         return null;
     }
+
+    // 선택 노드를 출력하는 printCurrentNode 메서드
+    public void printCurrentNode() {
+        if (isEmpty())
+            System.out.println("선택 노드가 없습니다.");
+        else
+            System.out.println(crnt.data);
+    }
+
+    // 모든 노드를 출력하는 dump 메서드
+    public void dump() {
+        Node<E> ptr = head.next;
+
+        while (ptr != head) {
+            System.out.println(ptr.data);
+            ptr = ptr.next;
+        }
+    }
+
+    // 모든 노드를 거꾸로 출력하는 dumpReverse 메서드
+    public void dumpReverse() {
+        Node<E> ptr = head.prev;
+
+        while (ptr != head) {
+            System.out.println(ptr.data);
+            ptr = ptr.prev;
+        }
+    }
+
+    // 선택 노드를 하나 뒤쪽으로 이동
+    public boolean next() {
+        if (isEmpty() || crnt.next == head)
+            return false;
+        crnt = crnt.next;
+        return true;
+    }
+
+    // 선택 노드를 하나 앞쪽으로 이동
+    public boolean prev() {
+        if (isEmpty() || crnt.prev == head)
+            return false;
+        crnt = crnt.prev;
+        return true;
+    }
+
+    // 선택 노드의 바로 뒤에 노드를 삽입
+    public void add(E o) {
+        Node<E> node = new Node<E>(o, crnt, crnt.next);
+        crnt.next = crnt.next.prev = node;
+        crnt = node;
+    }
+
+    public void addFirst(E o) {
+        crnt = head;
+        add(o);
+    }
+
+    public void addLast(E o) {
+        crnt = head.prev;
+        add(o);
+    }
 }
