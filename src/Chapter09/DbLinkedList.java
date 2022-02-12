@@ -105,4 +105,45 @@ public class DbLinkedList<E> {
         crnt = head.prev;
         add(o);
     }
+
+    public void removeCurrentNode() {
+        if (!isEmpty()) {
+            crnt.prev.next = crnt.next;
+            crnt.next.prev = crnt.prev;
+            crnt = crnt.prev;
+            if (crnt == head) crnt = head.next;
+        }
+    }
+
+    // 노드 p를 삭제
+    public void remove(Node p) {
+        Node<E> ptr = head.next;
+
+        while (ptr != head) {
+            if (ptr == p) {
+                crnt = p;
+                removeCurrentNode();
+                break;
+            }
+            ptr = ptr.next;
+        }
+    }
+
+    // 머리 노드를 삭제
+    public void removeFirst() {
+        crnt = head.next;
+        removeCurrentNode();
+    }
+
+    // 꼬리 노드를 삭제
+    public void removeLast() {
+        crnt = head.prev;
+        removeCurrentNode();
+    }
+
+    // 모든 노드를 삭제
+    public void clear() {
+        while (!isEmpty())
+            removeFirst();
+    }
 }
