@@ -60,7 +60,8 @@ public class DbLinkedListTester {
             PREV("선택 노드를 앞쪽으로"),
             PRINT_CRNT("선택 노드를 출력"),
             DUMP("모든 노드를 출력"),
-            TERMINATE("종료");
+            TERMINATE("종료"),
+            PURGE("중복삭제");
 
             private final String message;
 
@@ -85,12 +86,12 @@ public class DbLinkedListTester {
             do {
                 for (Menu m : Menu.values()) {
                     System.out.printf("(%d) %s  ", m.ordinal(), m.getMessage());
-                    if ((m.ordinal() % 3) == 2 && m.ordinal() != Menu.TERMINATE.ordinal())
+                    if ((m.ordinal() % 3) == 2 && m.ordinal() != Menu.PURGE.ordinal())
                         System.out.println();
                 }
                 System.out.print(" : ");
                 key = stdIn.nextInt();
-            } while (key < Menu.ADD_FIRST.ordinal() || key > Menu.TERMINATE.ordinal());
+            } while (key < Menu.ADD_FIRST.ordinal() || key > Menu.PURGE.ordinal());
             return Menu.MenuAt(key);
         }
 
@@ -163,6 +164,22 @@ public class DbLinkedListTester {
                     case CLEAR:
                         list.clear();
                         break;
+                        
+                    case PURGE:
+                        int i = 0;
+
+                        do {
+                            System.out.print("(1)번호로비교 (2)이름으로비교");
+                            i = stdIn.nextInt();
+                        } while (i != 1 && i != 2);
+
+                        if (i == 1)
+                            list.purge(Data.NO_ORDER);
+                        else
+                            list.purge(Data.NAME_ORDER);
+
+                        System.out.println("중복 삭제 완료");
+
                 }
             } while (menu != Menu.TERMINATE);
         }
