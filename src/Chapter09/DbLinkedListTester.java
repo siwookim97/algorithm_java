@@ -61,7 +61,8 @@ public class DbLinkedListTester {
             PRINT_CRNT("선택 노드를 출력"),
             DUMP("모든 노드를 출력"),
             TERMINATE("종료"),
-            PURGE("중복삭제");
+            PURGE("중복삭제"),
+            RETRIEVE("머리에서부터 점프");
 
             private final String message;
 
@@ -86,12 +87,12 @@ public class DbLinkedListTester {
             do {
                 for (Menu m : Menu.values()) {
                     System.out.printf("(%d) %s  ", m.ordinal(), m.getMessage());
-                    if ((m.ordinal() % 3) == 2 && m.ordinal() != Menu.PURGE.ordinal())
+                    if ((m.ordinal() % 3) == 2 && m.ordinal() != Menu.RETRIEVE.ordinal())
                         System.out.println();
                 }
                 System.out.print(" : ");
                 key = stdIn.nextInt();
-            } while (key < Menu.ADD_FIRST.ordinal() || key > Menu.PURGE.ordinal());
+            } while (key < Menu.ADD_FIRST.ordinal() || key > Menu.RETRIEVE.ordinal());
             return Menu.MenuAt(key);
         }
 
@@ -179,7 +180,15 @@ public class DbLinkedListTester {
                             list.purge(Data.NAME_ORDER);
 
                         System.out.println("중복 삭제 완료");
+                        break;
 
+                    case RETRIEVE:
+                        int cnt;
+                        System.out.print("몇 번 점프하시겠습니까?");
+                        cnt = stdIn.nextInt();
+
+                        System.out.println("점프 결과의 데이터는 " + list.retrieve(cnt) + "입니다.");
+                        break;
                 }
             } while (menu != Menu.TERMINATE);
         }

@@ -148,7 +148,7 @@ public class DbLinkedList<E> {
     }
 
     // 서로 같은 노드를 찾아 모두 삭제하는 메서드
-    public void purge(Comparator <? super E> c) {
+    public void purge(Comparator<? super E> c) {
         Node<E> ptr = head.next;
         Node<E> pre = head.next.next;
         int cnt = 0;
@@ -166,12 +166,26 @@ public class DbLinkedList<E> {
             pre = ptr.next;
             cnt = 0;
         }
-        crnt = head;
+        crnt = head.next;
     }
 
     // 머리에서부터 점프하는 메서드
     public E retrieve(int n) {
+        Node<E> ptr = head.next;
+        int cnt = n;
 
+        if (n == 0)
+            return ptr.data;
+        while (ptr != head || cnt > 0) {
+            cnt--;
+            ptr = ptr.next;
+            crnt = ptr;
+
+            if (cnt == 0) {
+                return ptr.data;
+            }
+            crnt = head.next;
+        }
         return null;
     }
 }
