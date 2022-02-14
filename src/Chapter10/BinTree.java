@@ -159,4 +159,61 @@ public class BinTree<K, V> {
     public void print() {
         printSubTree(root);
     }
+
+    // 키 값의 내림차순으로 모든 노드를 표시
+    public void printReverse(Node node) {
+        if (node != null) {
+            printReverse(node.right);
+            System.out.println(node.key + " " + node.data);
+            printReverse(node.left);
+        }
+    }
+
+    public void printDown() {
+        printReverse(root);
+    }
+
+    // 가장 작은 키 값을 반환
+    public K getMinKey() {
+        Node<K, V> p = root;
+
+        if (p == null)
+            return null;
+        while (p.left != null)
+            p = p.left;
+        return p.getKey();
+    }
+
+    // 가장 작은 키 값을 갖는 노드의 데이터를 반환
+    public V getDataWithMinKey() {
+        Node<K, V> p = root;
+
+        if (p == null)
+            return null;
+        while (p.left != null)
+            p = p.left;
+        return p.getValue();
+    }
+
+    // 가장 큰 키 값을 반환
+    public K getMaxKey() {
+        Node<K, V> p = root;
+
+        if (p == null)
+            return null;
+        while (p.right != null)
+            p = p.left;
+        return p.getKey();
+    }
+
+    // 가장 큰 키 값을 갖는 노드의 데이터를 반환
+    public V getDataWithMaxKey() {
+        Node<K, V> p = root;
+
+        if (p == null)
+            return null;
+        while (p.right != null)
+            p = p.left;
+        return p.getValue();
+    }
 }

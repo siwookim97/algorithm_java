@@ -86,8 +86,7 @@ public class BinTreeTester {
         do {
             switch (menu = SelectMenu()) {
                 case ADD:
-                    data = new Data();
-                    data.scanData("삽입", Data.NO | Data.NAME);
+                    data = new Data();                    data.scanData("삽입", Data.NO | Data.NAME);
                     tree.add(data.keyCode(), data);
                     break;
 
