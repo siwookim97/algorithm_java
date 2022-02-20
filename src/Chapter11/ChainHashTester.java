@@ -39,7 +39,7 @@ public class ChainHashTester {
         REMOVE("삭제"),
         SEARCH("검색"),
         DUMP("표시"),
-        TERMUNATE("종료");
+        TERMINATE("종료");
 
         private final String message;
 
@@ -67,7 +67,7 @@ public class ChainHashTester {
                 System.out.printf("(%d) %s  ", m.ordinal(), m.getMessage());
             System.out.print(" : ");
             key = stdIn.nextInt();
-        } while (key < Menu.ADD.ordinal() || key > Menu.TERMUNATE.ordinal());
+        } while (key < Menu.ADD.ordinal() || key > Menu.TERMINATE.ordinal());
 
         return Menu.MenuAt(key);
     }
