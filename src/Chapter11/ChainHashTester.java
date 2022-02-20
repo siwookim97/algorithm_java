@@ -105,6 +105,6 @@ public class ChainHashTester {
                     hash.dump();
                     break;
             }
-        } while (menu != Menu.TERMUNATE);
+        } while (menu != Menu.TERMINATE);
     }
 }
