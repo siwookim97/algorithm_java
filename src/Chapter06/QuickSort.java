@@ -158,7 +158,6 @@ public class QuickSort {
         }
         else if (s[a] > s[c]) { // b >= a > c
             swap(s, a, c);
-            swap(s, )
             return s[a];
         }
         else if (s[b] > s[c])
