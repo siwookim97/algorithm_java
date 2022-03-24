@@ -5,49 +5,32 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class Baek9020 {
-    /*
-		false : 소수
-		range : 0 ~ 10000
-	*/
-    public static boolean[] prime = new boolean[10001];
-
-    public static void main(String[] args) throws IOException {
-
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-
-        get_prime();
-
-        int T = Integer.parseInt(br.readLine());	// 테스트케이스
-
-        while (T-- > 0) {
-            int n = Integer.parseInt(br.readLine());
-            int first_partition = n / 2;
-            int second_partition = n / 2;
-
-            while (true) {
-
-                // 두 파티션이 모두 소수일 경우
-                if (!prime[first_partition] && !prime[second_partition]) {
-                    System.out.println(first_partition + " " + second_partition);
-                    break;
-                }
-                first_partition--;
-                second_partition++;
-            }
+    static boolean prime(int n) {
+        for (int i = 2; i <= n / 2; i++) {
+            if (n % i == 0)
+                return false;
         }
-
+        return true;
     }
 
-    // 에라토스테네스의 체
-    public static void get_prime() {
-        prime[0] = prime[1] = true;
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringBuilder sb = new StringBuilder();
+        StringBuilder sbResult = new StringBuilder();
 
-        for (int i = 2; i <= Math.sqrt(prime.length); i++) {
-            if (prime[i])
-                continue;
-            for (int j = i * i; j < prime.length; j += i) {
-                prime[j] = true;
+        int n = Integer.parseInt(br.readLine());
+        for (int i = 0; i < n; i++) {
+            int num = Integer.parseInt(br.readLine());
+
+            for (int j = num / 2; j < num; j++) {
+                boolean prime1 = prime(j);
+                boolean prime2 = prime(num - j);
+                if (prime1 == true && prime2 == true) {
+                    sb.append(num - j + " ").append(j + "\n");
+                    break;
+                }
             }
         }
+        System.out.println(sb);
     }
 }
