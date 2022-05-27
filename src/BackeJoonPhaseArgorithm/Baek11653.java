@@ -11,6 +11,7 @@ public class Baek11653 {
 
         int num = Integer.parseInt(br.readLine());
 
+        int nu1 = 1;
         int k = 2;
         while (num != 1) {
             if (num % k == 0) {
