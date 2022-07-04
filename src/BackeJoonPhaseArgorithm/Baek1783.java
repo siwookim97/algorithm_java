@@ -14,6 +14,7 @@ public class Baek1783 {
         int M = Integer.parseInt(st.nextToken());
         int cnt;
 
+
         if (N == 1) {
             cnt = 1;
         }
