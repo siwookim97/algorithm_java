@@ -9,6 +9,7 @@ public class Code12921 {
         return true;
     }
 
+
     public static int solution(int n) {
         int answer = 0;
         for (int i = 2; i <= n; i++) {
