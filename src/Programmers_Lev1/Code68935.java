@@ -10,12 +10,12 @@ public class Code68935 {
             sb.append(i%3);
         }
 
-        sb.reverse();
-
-        for (int i = 0; i < sb.length(); i++) {
-            result += (int)Math.pow(3, i) * (sb.charAt(i) - '0');
-        }
-        return result;
+//        sb.reverse();
+//
+//        for (int i = 0; i < sb.length(); i++) {
+//            result += (int)Math.pow(3, i) * (sb.charAt(i) - '0');
+//        }
+        return Integer.parseInt(sb.toString(), 3);
     }
 
     public static void main(String[] args) {
