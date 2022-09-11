@@ -9,6 +9,7 @@ public class Baek13305 {
         long[] distance = new long[n - 1];
         long[] spot = new long[n];
 
+
         for (int i = 0; i < n - 1; i++) {
             distance[i] = sc.nextLong();
         }
